@@ -21,7 +21,6 @@ router.post('/updateProfile', passport.authenticate('jwt', { session: false }),
 //UPLOAD PASSWORD
 router.post('/updatePassword', passport.authenticate('jwt', { session: false }), updatePassword)    
 
-
 //CHAT RELATED ROUTES    
 router.get('/chat/:roomId', passport.authenticate('jwt', { session: false }), getPrivateChat)
 
@@ -31,17 +30,11 @@ router.get('/chat/newerChats/:receiverName', passport.authenticate('jwt', { sess
     
 router.get('/chat/previousChats/:senderName', passport.authenticate('jwt', { session: false }), previousChats)
     
-
-
 router.get('/getMarks', passport.authenticate('jwt', { session: false }),getMarks)
 
 router.get('/getAllSubjects', passport.authenticate('jwt', { session: false }), getAllSubjects)
 
 router.get('/checkAttendence', passport.authenticate('jwt', { session: false }), checkAttendence)
-
-
-
-
 
 //HELPER ROUTES
 router.post('/getAllStudents', passport.authenticate('jwt', { session: false }), getAllStudents)
@@ -49,9 +42,5 @@ router.post('/getAllStudents', passport.authenticate('jwt', { session: false }),
 router.post('/getStudentByRegName', passport.authenticate('jwt', { session: false }), getStudentByRegName)
 
 router.post('/getStudentByName', passport.authenticate('jwt', { session: false }), getStudentByName)
-
-
-
-
 
 module.exports = router

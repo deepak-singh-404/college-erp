@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-
 const attendenceSchema = new Schema({
     student: {
         type: Schema.Types.ObjectId,
@@ -20,6 +19,5 @@ const attendenceSchema = new Schema({
         default:0
     }
 })
-
 
 module.exports = mongoose.model('attendence', attendenceSchema)

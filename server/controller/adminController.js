@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs')
 const gravatar = require('gravatar')
 const jwt = require('jsonwebtoken')
 
-
 //Validation
 const validateAdminRegisterInput = require('../validation/adminRegister')
 const validateFacultyRegisterInput = require('../validation/facultyRegister')
@@ -19,21 +18,19 @@ const Admin = require('../models/admin')
 //Config
 const keys = require('../config/key')
 
-
-
 module.exports = {
     addAdmin: async (req, res, next) => {
         try {
-            const { errors, isValid } = validateAdminRegisterInput(req.body);
-            if (!isValid) {
-                return res.status(400).json(errors)
+            const { name, email, dob, department, contactNumber } = req.body
+            
+            //VALIDATE REQUEST BODY
+            if (!name || !email || !dob || !department || !contactNumber){
+                return res.status(400).json({success:false, message:"Probably you have missed certain fields"})
             }
-            const { name, email,
-                dob,department, contactNumber} = req.body
+
             const admin = await Admin.findOne({ email })
             if (admin) {
-                errors.email = "Email already exist"
-                return res.status(400).json(errors)
+                return res.status(400).json({success:false, message:"Email already exist"})
             }
             const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' })
             let departmentHelper;
@@ -95,12 +92,11 @@ module.exports = {
                 dob,
             })
             await newAdmin.save()
-            res.status(200).json({ result: newAdmin })
+            return res.status(200).json({ success: true, message: "Admin registerd successfully", response: newAdmin })
         }
-        catch (err) {
-            res.status(400).json({ message: `error in adding new admin", ${err.message}` })
+        catch (error) {
+            return res.status(400).json({ success: false, message: error.message })
         }
-
     },
     getAllStudents: async (req, res, next) => {
         try {
@@ -114,7 +110,7 @@ module.exports = {
         catch (err) {
             res.status(400).json({ message: `error in getting all student", ${err.message}` })
         }
-        
+
     },
     adminLogin: async (req, res, next) => {
         try {
@@ -140,7 +136,7 @@ module.exports = {
                 id: admin.id, name: admin.name, email: admin.email,
                 contactNumber: admin.contactNumber, avatar: admin.avatar,
                 registrationNumber: admin.registrationNumber,
-                joiningYear: admin.joiningYear, 
+                joiningYear: admin.joiningYear,
                 department: admin.department
             };
             jwt.sign(
@@ -158,7 +154,7 @@ module.exports = {
         catch (err) {
             console.log("Error in admin login", err.message)
         }
-        
+
     },
     addStudent: async (req, res, next) => {
         try {
@@ -170,13 +166,13 @@ module.exports = {
             const { name, email, year, fatherName, aadharCard,
                 gender, department, section, dob, studentMobileNumber,
                 fatherMobileNumber } = req.body
-            
+
             const student = await Student.findOne({ email })
             if (student) {
                 errors.email = "Email already exist"
                 return res.status(400).json(errors)
             }
-            const avatar = gravatar.url(email,{s:'200',r:'pg', d:'mm'})
+            const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' })
             let departmentHelper;
             if (department === "C.S.E") {
                 departmentHelper = "01"
@@ -307,7 +303,7 @@ module.exports = {
 
             const faculties = await Faculty.find({ department })
             let helper;
-            if  (faculties.length < 10) {
+            if (faculties.length < 10) {
                 helper = "00" + faculties.length.toString()
             }
             else if (faculties.length < 100 && faculties.length > 9) {
@@ -332,7 +328,7 @@ module.exports = {
                 name,
                 email,
                 designation,
-                password:hashedPassword,
+                password: hashedPassword,
                 department,
                 facultyMobileNumber,
                 gender,
@@ -419,7 +415,7 @@ module.exports = {
         try {
             const { department } = req.body
             const allFaculties = await Faculty.find({ department })
-            res.status(200).json({ result: allFaculties})
+            res.status(200).json({ result: allFaculties })
         }
         catch (err) {
             console.log("Error in gettting all faculties", err.message)
@@ -438,7 +434,7 @@ module.exports = {
     getAllSubject: async (req, res, next) => {
         try {
             const { department, year } = req.body
-            const allSubjects = await Subject.find({ department, year})
+            const allSubjects = await Subject.find({ department, year })
             res.status(200).json({ result: allSubjects })
         }
         catch (err) {

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-
 const facultySchema = new Schema({
     name: {
         type: String,
@@ -53,6 +52,5 @@ const facultySchema = new Schema({
         type: String
     }
 })
-
 
 module.exports = mongoose.model('faculty', facultySchema)

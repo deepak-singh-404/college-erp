@@ -71,7 +71,6 @@ module.exports = {
                 errors.department = 'No Subject found in given department';
                 return res.status(404).json(errors);
             }
-
             const students = await Student.find({ department, year, section })
             if (students.length === 0) {
                 errors.department = 'No Student found'
@@ -188,7 +187,6 @@ module.exports = {
         }
         
     },
-    
     getAllSubjects: async (req, res, next) => {
         try {
             const allSubjects = await Subject.find({})

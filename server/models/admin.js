@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-
 const adminSchema = new Schema({
     name: {
         type: String,
@@ -31,10 +30,8 @@ const adminSchema = new Schema({
         type: String
     },
     contactNumber: {
-        type: String
+        type: Number
     }
-
-})
-
+}, { strict: false })
 
 module.exports = mongoose.model('admin', adminSchema)

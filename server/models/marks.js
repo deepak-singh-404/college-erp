@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-
 const markSchema = new Schema({
     student: {
         type: Schema.Types.ObjectId,
@@ -33,6 +32,5 @@ const markSchema = new Schema({
         type:String
     }
 })
-
 
 module.exports = mongoose.model('mark', markSchema)

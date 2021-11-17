@@ -6,7 +6,7 @@ import {
     GET_SUBJECTS
 } from '../actionTypes'
 
-
+const url = "http://localhost:5000"
 
 const setAdmin = (data) => {
     return {
@@ -72,17 +72,16 @@ const adminGetAllSubjectHelper = (data) => {
     }
 }
 
-// https://apna-erp.herokuapp.com
-// https://apna-erp.herokuapp.com
-// http://localhost:5000
 export const adminLogin = (adminCredential) => {
     return async (dispatch) => {
         try {
+            console.log("Admin Login Credentials", adminCredential)
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/login",
+                url: url + "/api/admin/login",
                 data: adminCredential
             })
+            console.log("login response", data)
             const { token } = data;
             // Set token to local Storage
             localStorage.setItem('adminJwtToken', token);
@@ -107,7 +106,7 @@ export const adminGetAllSubjects = () => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: "https://apna-erp.herokuapp.com/api/admin/getSubjects",
+                url: url + "/api/admin/getSubjects",
             })
             dispatch(getSubjctsHelper(data))
         }
@@ -122,7 +121,7 @@ export const adminAddFaculty = (facultyCredential) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/addFaculty",
+                url: url + "/api/admin/addFaculty",
                 data: facultyCredential
             })
             dispatch(adminAddFacultyFlag(true))
@@ -142,7 +141,7 @@ export const adminAddStudent = (studentCredential) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/addStudent",
+                url: url + "/api/admin/addStudent",
                 data: studentCredential
             })
             dispatch(adminAddStudentFlag(true))
@@ -162,7 +161,7 @@ export const adminAddSubject = (subjectCredential) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/addSubject",
+                url: url + "/api/admin/addSubject",
                 data: subjectCredential
             })
             dispatch(adminAddSubjectFlag(true))
@@ -183,7 +182,7 @@ export const adminAddAdmin = (adminCredentails) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/addAdmin",
+                url: url + "/api/admin/addAdmin",
                 data: adminCredentails
             })
             dispatch(adminAddAdminFlag(true))
@@ -204,7 +203,7 @@ export const adminGetAllFaculty = (department) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/getAllFaculty",
+                url: url + "/api/admin/getAllFaculty",
                 data: department
             })
             dispatch(adminGetAllFacultyHelper(data.result))
@@ -223,7 +222,7 @@ export const adminGetAllStudent = (searchCredentials) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/getAllStudent",
+                url: url + "/api/admin/getAllStudent",
                 data: searchCredentials
             })
             dispatch(adminGetAllStudentHelper(data.result))
@@ -242,7 +241,7 @@ export const adminGetAllSubject = (department) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/admin/getAllSubject",
+                url: url + "/api/admin/getAllSubject",
                 data: department
             })
             dispatch(adminGetAllSubjectHelper(data.result))

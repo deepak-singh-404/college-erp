@@ -3,8 +3,6 @@ import setAuthToken from '../utils/setAuthToken'
 import jwt_decode from 'jwt-decode';
 import { SET_FACULTY, SET_ERRORS, SET_FLAG, SET_ERRORS_HELPER } from '../actionTypes'
 
-
-
 const setFaculty = (data) => {
     return {
         type: SET_FACULTY,
@@ -12,6 +10,7 @@ const setFaculty = (data) => {
     }
 }
 
+const url = "http://localhost:5000"
 
 const fetchStudentsHelper = (data) => {
     return {
@@ -33,7 +32,7 @@ export const facultyLogin = (facultyCredential) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/faculty/login",
+                url: url + "/api/faculty/login",
                 data: facultyCredential
             })
             const { token } = data;
@@ -60,7 +59,7 @@ export const facultyUpdatePassword = (passwordData) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/faculty/updatePassword",
+                url: url + "/api/faculty/updatePassword",
                 data: passwordData
             })
             alert("Password Updated Successfully")
@@ -80,7 +79,7 @@ export const getOTPFaculty = (studentEmail) => {
         try {
             await axios({
                 method: 'Post',
-                url: 'https://apna-erp.herokuapp.com/api/faculty/forgotPassword',
+                url: url + '/api/faculty/forgotPassword',
                 data: studentEmail
             })
             alert("Otp has been sent to your email")
@@ -101,7 +100,7 @@ export const submitOTPFaculty = (newPasswordWithOtp, history) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/faculty/postOTP",
+                url: url + "/api/faculty/postOTP",
                 data: newPasswordWithOtp
             })
             alert("Password Update, kindly login with updated password")
@@ -122,7 +121,7 @@ export const fetchStudents = (department, year, section) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/faculty/fetchStudents",
+                url: url + "/api/faculty/fetchStudents",
                 data: { department, year, section}
             })
             dispatch(fetchStudentsHelper(data.result))
@@ -149,7 +148,7 @@ export const facultyUpdate = (updatedData) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: `https://apna-erp.herokuapp.com/api/faculty/updateProfile`,
+                url: url + `/api/faculty/updateProfile`,
                 data: updatedData
             })
             dispatch(facultyUpdateProfileFlag(true))
@@ -166,7 +165,7 @@ export const markAttendence = (selectedStudents, subjectCode, department, year,
         try {
                 await axios({
                 method: 'Post',
-                    url: "https://apna-erp.herokuapp.com/api/faculty/markAttendence",
+                    url: url + "/api/faculty/markAttendence",
                 data: { selectedStudents, subjectCode, department, year, section}
                 })
             alert("attendence has been marked successfully")
@@ -187,7 +186,7 @@ export const uploadMarks = (subjectCode, exam, totalMarks, marks,
         try {
             await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/faculty/uploadMarks",
+                url: url + "/api/faculty/uploadMarks",
                 data: {
                     subjectCode, exam, totalMarks, marks, department, year, section,
                     }

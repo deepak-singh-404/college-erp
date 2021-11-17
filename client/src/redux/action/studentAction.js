@@ -3,8 +3,7 @@ import setAuthToken from '../utils/setAuthToken'
 import jwt_decode from 'jwt-decode';
 import { SET_STUDENT, SET_ERRORS_HELPER, SET_ERRORS, STUDENT_UPDATE_PASSWORD, SET_OTP, SET_FLAG } from '../actionTypes'
 
-
-
+const url = "http://localhost:5000"
 
 export const setChatHistory = (data) => {
     return {
@@ -12,7 +11,6 @@ export const setChatHistory = (data) => {
         payload: data
     }
 }
-
 
 const setStudent = (data) => {
     return {
@@ -34,7 +32,6 @@ const getStudentByRegNameHelper = (data) => {
         payload: data
     }
 }
-
 
 
 const privateConversation = (data) => {
@@ -92,7 +89,7 @@ export const studentLogin = (studentCredential) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/student/login",
+                url: url + "/api/student/login",
                 data: studentCredential
             })
             const { token } = data;
@@ -121,7 +118,7 @@ export const studentUpdatePassword = (passwordData) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/student/updatePassword",
+                url: url + "/api/student/updatePassword",
                 data: passwordData
             })
             alert("Password Updated Successfully")
@@ -140,7 +137,7 @@ export const chatHelper = (name) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/student/getStudentByName",
+                url: url + "/api/student/getStudentByName",
                 data: name
             })
             dispatch(chatHelp(data.result))
@@ -156,7 +153,7 @@ export const getStudentByRegName = (registrationNumber) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/student/getStudentByRegName",
+                url: url + "/api/student/getStudentByRegName",
                 data: { registrationNumber }
             })
             dispatch(getStudentByRegNameHelper(data.result))
@@ -169,15 +166,12 @@ export const getStudentByRegName = (registrationNumber) => {
 }
 
 
-
-
-
 export const getOTPStudent = (studentEmail) => {
     return async (dispatch) => {
         try {
             await axios({
                 method: 'Post',
-                url: 'https://apna-erp.herokuapp.com/api/student/forgotPassword',
+                url: url + '/api/student/forgotPassword',
                 data: studentEmail
             })
             alert("Otp has been sent to your email")
@@ -198,7 +192,7 @@ export const submitOTPStudent = (newPasswordWithOtp, history) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: "https://apna-erp.herokuapp.com/api/student/postOTP" ,
+                url: url + "/api/student/postOTP" ,
                 data:newPasswordWithOtp
             })
             alert("Password Update, kindly login with updated password")
@@ -218,7 +212,7 @@ export const sendMessage = (room,messageobj) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: `https://apna-erp.herokuapp.com/api/student/chat/${room}`,
+                url: url + `/api/student/chat/${room}`,
                 data: messageobj
             })
         }
@@ -234,7 +228,7 @@ export const getPrivateConversation = (roomId) => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: `https://apna-erp.herokuapp.com/api/student/chat/${roomId}`,
+                url: url + `/api/student/chat/${roomId}`,
             })
             dispatch(privateConversation(data.result))
         }
@@ -249,7 +243,7 @@ export const getPrivateConversation2 = (roomId) => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: `https://apna-erp.herokuapp.com/api/student/chat/${roomId}`,
+                url: url + `/api/student/chat/${roomId}`,
             })
             dispatch(privateConversation2(data.result))
         }
@@ -264,7 +258,7 @@ export const previousChats = (senderName) => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: `https://apna-erp.herokuapp.com/api/student/chat/previousChats/${senderName}`,
+                url: url + `/api/student/chat/previousChats/${senderName}`,
             })
             dispatch(previousChatsHelper(data.result))
         }
@@ -280,7 +274,7 @@ export const newerChats = (receiverName) => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: `https://apna-erp.herokuapp.com/api/student/chat/newerChats/${receiverName}`,
+                url: url + `/api/student/chat/newerChats/${receiverName}`,
             })
             dispatch(newerChatsHelper(data.result))
         }
@@ -295,7 +289,7 @@ export const studentUpdate = (updatedData) => {
         try {
             const { data } = await axios({
                 method: 'Post',
-                url: `https://apna-erp.herokuapp.com/api/student/updateProfile`,
+                url: url + `/api/student/updateProfile`,
                 data: updatedData
             })
         }
@@ -310,7 +304,7 @@ export const getAllSubjects = () => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: "https://apna-erp.herokuapp.com/api/student/getAllSubjects"
+                url: url + "/api/student/getAllSubjects"
             })
             dispatch(getAllSubjectsHelper(data.result))
         }
@@ -325,7 +319,7 @@ export const fetchAttendence = () => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: "https://apna-erp.herokuapp.com/api/student/checkAttendence"
+                url: url + "/api/student/checkAttendence"
             })
             dispatch(fetchAttendenceHelper(data.result))
         }
@@ -341,7 +335,7 @@ export const getMarks = () => {
         try {
             const { data } = await axios({
                 method: 'Get',
-                url: "https://apna-erp.herokuapp.com/api/student/getMarks"
+                url: url + "/api/student/getMarks"
             })
            dispatch(getMarksHelper(data.result))
         }

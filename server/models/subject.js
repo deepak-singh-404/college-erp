@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-
 const subjectSchema = new Schema({
     department: {
         type: String,
@@ -28,9 +27,7 @@ const subjectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'attendence'
     }
-
 })
-
 
 module.exports = mongoose.model('subject', subjectSchema)
 

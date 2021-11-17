@@ -3,23 +3,10 @@ const http = require('http')
 const socket =  require('socket.io')
 const mongoose = require('mongoose')
 const passport = require('passport')
-const path = require('path')
-
-
-
+const cors = require('cors')
+const morgan = require('morgan')
 const dotenv = require('dotenv');
 dotenv.config()
-
-const cors = require('cors')
-const cookieParser = require('cookie-parser');
-const morgan = require('morgan')
-
-
-
-
-
-
-
 
 //MIDDILWARES
 const app = express();
@@ -27,26 +14,12 @@ let server = http.createServer(app);
 let io = socket(server);
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
-app.use(cookieParser())
 app.use(cors())
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', '*')
-//     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE')
-//     next()
-// })
 
-app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-    next();
-});
+
 const adminRoutes = require('./routes/adminRoutes')
 const facultyRoutes = require('./routes/facultyRoutes')
 const studentRoutes = require('./routes/studentRoutes')
-
 
 //Passport Middleware
 app.use(passport.initialize());
@@ -73,14 +46,12 @@ io.on('connection', (socket) => {
 })
 
 
+let _response = {}
+
 //ROUTES
 app.use('/api/admin', adminRoutes)
 app.use('/api/faculty', facultyRoutes)
 app.use('/api/student', studentRoutes)
-
-
-
-
 
 
 //Catching 404 Error
@@ -104,10 +75,16 @@ const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGO_URL.replace("<password>", process.env.MONGO_PASSWORD)
 , { useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true }).then(() => {
-    server.listen(PORT)
-    console.log("server Started")
+    _response.database = "Healthy"
+    console.log("Database Connected")
+    console.log("server Started on PORT", PORT)
 }).catch((err) => {
+    _response.database = "Unhealthy"
     console.log("Error in connecting to DataBase", err.message)
+})
+
+server.listen(PORT, ()=>{
+    _response.server = "Healthy"
 })
 
 // process.env.MONGO_URL.replace("<password>", process.env.MONGO_PASSWORD

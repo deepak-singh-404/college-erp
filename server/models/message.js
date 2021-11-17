@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-
 const messageSchema = new Schema({
     message: {
         type: String
@@ -34,6 +33,5 @@ const messageSchema = new Schema({
         default: Date.now
     }
 })
-
 
 module.exports = mongoose.model('message', messageSchema)

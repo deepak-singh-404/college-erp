@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-
 const studentSchema = new Schema({
     name: {
         type: String,
@@ -68,11 +67,7 @@ const studentSchema = new Schema({
     otp: {
        type:String
     }
-
-
-
 })
-
 
 module.exports = mongoose.model('student',studentSchema)
 

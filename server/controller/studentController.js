@@ -8,19 +8,15 @@ const Attendence = require('../models/attendence')
 const Message = require('../models/message')
 const Mark = require("../models/marks")
 
-
 //File Handler
 const bufferConversion = require('../utils/bufferConversion')
 const cloudinary = require('../utils/cloudinary')
-
 
 const validateStudentLoginInput = require('../validation/studentLogin')
 const validateStudentUpdatePassword = require('../validation/studentUpdatePassword')
 const validateForgotPassword = require('../validation/forgotPassword')
 const validateOTP = require('../validation/otpValidation')
 const { markAttendence } = require("./facultyController")
-
-
 
 module.exports = {
     studentLogin: async (req, res, next) => {
@@ -411,5 +407,4 @@ module.exports = {
             return res.status(400).json({ "Error in getting marks": err.message })
         }
     }
-
 }
