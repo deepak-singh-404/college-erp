@@ -83,6 +83,11 @@ mongoose.connect(process.env.MONGO_URL.replace("<password>", process.env.MONGO_P
     console.log("Error in connecting to DataBase", err.message)
 })
 
+app.use('/',(req,res)=>{
+    res.status(200).json(_response)
+})
+
+
 server.listen(PORT, ()=>{
     _response.server = "Healthy"
 })
