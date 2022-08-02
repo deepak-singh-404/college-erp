@@ -1,2 +1,1 @@
-# college-erp
-liveDemo : https://srm-erp.netlify.app/
+# Sistema de Gestão Escolar
