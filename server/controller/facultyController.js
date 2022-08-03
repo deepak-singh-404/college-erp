@@ -30,12 +30,16 @@ module.exports = {
             }
             const { registrationNumber, password } = req.body;
 
+            
             const faculty = await Faculty.findOne({ registrationNumber })
+            console.log('dado que retornou', faculty)
             if (!faculty) {
                 errors.registrationNumber = 'Registration number not found';
                 return res.status(404).json(errors);
             }
+            
             const isCorrect = await bcrypt.compare(password, faculty.password)
+            console.log('dado que retornou', isCorrect)
             if (!isCorrect) {
                 errors.password = 'Invalid Credentials';
                 return res.status(404).json(errors);
