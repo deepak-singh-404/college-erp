@@ -97,6 +97,7 @@ export const adminLogin = (adminCredential) => {
                 type: SET_ERRORS,
                 payload: err.response.data
             })
+            console.log(err)
         }
     }
 }

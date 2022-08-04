@@ -36,7 +36,7 @@ module.exports = {
             return res.status(404).json(errors);
         }
         //2° console log
-        const isCorrect = await bcrypt.compare(password, student.password)
+        const isCorrect = password == student.password
         console.log('dado que retornou', isCorrect)
         if (!isCorrect) {
             errors.password = 'Invalid Credentials';
