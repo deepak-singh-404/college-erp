@@ -1,0 +1,41 @@
+.all-faculty-container{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20rem;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+}
+.select-departament{
+    display: flex;
+    flex-direction: column;
+}
+.search-container{
+    display: flex;
+    align-items: center;
+}
+.btn-search-faculty{
+    background-color:#2BB1BA;
+    color: white;
+    width: 100%;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+.search-container>select{
+    outline:1px solid #2BB1BA;
+    border: none;
+}
+.table-container>tr>th{
+    color: #2b6eba;
+}
+.table-infos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.infos>td{
+    width: 250px;
+}

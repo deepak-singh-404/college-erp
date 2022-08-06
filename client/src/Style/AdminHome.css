@@ -1,0 +1,33 @@
+body{
+    background-color: white;
+}
+.dashboard-container{
+    text-align: center;
+    margin-left: 18rem;
+}
+.table-border{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5rem;
+}
+td{
+    border: 1px solid black;
+    padding: 15px;
+    width: 400px;
+}
+.btn-logout{
+    margin-right: 3rem;
+    margin-top: 2rem;
+    padding: 5px;
+    border: 1px solid red;
+    border-radius: 20px;
+    background-color: transparent;
+    color: red;
+
+}
+.btn-logout:hover{
+    background-color: red;
+    color: white;
+    transition: 300ms;
+}

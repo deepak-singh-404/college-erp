@@ -1,9 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
-
-
 import FacultyHomeHelper from '../Components/FacultyHomeHelper'
+import '../Style/FacultyInterface.css'
 
 
 const FacultyInterface = () => {
@@ -19,14 +18,14 @@ const FacultyInterface = () => {
 
                         </div>
                         <div className="col-md-8">
-                            <div className="row">
+                            <div className="main-interface-container">
                                 <div className="col-5">
                                     <div className="card" style={{ width: "18rem" }}>
                                         <img className="card-img-top" src={store.faculty.faculty.faculty.avatar} alt="Card image cap" />
                                         <div className="card-body">
                                             <h5 className="card-title">{store.faculty.faculty.faculty.name}</h5>
                                             <h5 className="card-title">{store.faculty.faculty.faculty.registrationNumber}</h5>
-                                            <Link to='/faculty/updateProfile'>UPDATE PROFILE</Link>
+                                            <Link to='/faculty/updateProfile' className='update'>UPDATE PROFILE</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -34,7 +33,7 @@ const FacultyInterface = () => {
                                     <table className="table border">
                                         <tbody>
                                             <tr>
-                                                <td>Name</td>
+                                                <td>Nome</td>
                                                 <td>{store.faculty.faculty.faculty.name}</td>
                                             </tr>
                                             <tr>
@@ -42,34 +41,34 @@ const FacultyInterface = () => {
                                                 <td>{store.faculty.faculty.faculty.email}</td>
                                             </tr>
                                             <tr>
-                                                <td>Registration Number</td>
+                                                <td>Número de Registro</td>
                                                 <td>{store.faculty.faculty.faculty.registrationNumber}</td>
                                             </tr>
                                             <tr>
-                                                <td>Date Of Birth</td>
+                                                <td>Data de Nascimento</td>
                                                 <td>{store.faculty.faculty.faculty.dob}</td>
                                             </tr>
                                             <tr>
-                                                <td>Designation</td>
+                                                <td>Função</td>
                                                 <td>{store.faculty.faculty.faculty.designation}</td>
                                             </tr>
                                             <tr>
-                                                <td>Joining Year</td>
+                                                <td>Ano de Entrada</td>
                                                 <td>{store.faculty.faculty.faculty.joiningYear}</td>
                                             </tr>
                                             <tr>
-                                                <td>Department</td>
+                                                <td>Departamento</td>
                                                 <td>{store.faculty.faculty.faculty.department}</td>
                                             </tr>
                                             <tr>
-                                                <td>Gender</td>
+                                                <td>Gênero</td>
                                                 <td>{store.faculty.faculty.faculty.gender ? store.faculty.faculty.faculty.gender :
 
                                                     "NA"
                                                 }</td>
                                             </tr>
                                             <tr>
-                                                <td>Contact Number</td>
+                                                <td>Número de Contato</td>
                                                 <td>{store.faculty.faculty.faculty.facultyMobileNumber ?
                                                     store.faculty.faculty.faculty.facultyMobileNumber : "NA"}</td>
                                             </tr>
@@ -78,9 +77,6 @@ const FacultyInterface = () => {
 
                                 </div>
                             </div>
-                        </div>
-                        <div className="col-md-2">
-
                         </div>
 
                     </div>

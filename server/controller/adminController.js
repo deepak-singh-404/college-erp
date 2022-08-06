@@ -34,24 +34,14 @@ module.exports = {
             }
             const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' })
             let departmentHelper;
-            if (department === "C.S.E") {
+            if (department === "Fundamental 1") {
                 departmentHelper = "01"
             }
-            else if (department === "E.C.E") {
+            else if (department === "Fundamental 2") {
                 departmentHelper = "02"
             }
-            else if (department === "I.T") {
+            else if (department === "Ensino Médio") {
                 departmentHelper = "03"
-            }
-            else if (department === "Mechanical") {
-                departmentHelper = "04"
-            }
-            else if (department === "Civil") {
-                departmentHelper = "05"
-
-            }
-            else if (department === "E.E.E") {
-                departmentHelper = "06"
             }
             else {
                 departmentHelper = "00"
@@ -174,24 +164,14 @@ module.exports = {
             }
             const avatar = gravatar.url(email, { s: '200', r: 'pg', d: 'mm' })
             let departmentHelper;
-            if (department === "C.S.E") {
+            if (department === "Fundamental 1") {
                 departmentHelper = "01"
             }
-            else if (department === "E.C.E") {
+            else if (department === "Fundamental 2") {
                 departmentHelper = "02"
             }
-            else if (department === "I.T") {
+            else if (department === "Ensino Médio") {
                 departmentHelper = "03"
-            }
-            else if (department === "Mechanical") {
-                departmentHelper = "04"
-            }
-            else if (department === "Civil") {
-                departmentHelper = "05"
-
-            }
-            else {
-                departmentHelper = "06"
             }
 
             const students = await Student.find({ department })
@@ -282,24 +262,16 @@ module.exports = {
                 d: 'mm' // Default
             });
             let departmentHelper;
-            if (department === "C.S.E") {
+            if (department === "Fundamental 1") {
                 departmentHelper = "01"
             }
-            else if (department === "E.C.E") {
+            else if (department === "Fundamental 2") {
                 departmentHelper = "02"
             }
-            else if (department === "I.T") {
+            else if (department === "Ensino Médio") {
                 departmentHelper = "03"
             }
-            else if (department === "Mechanical") {
-                departmentHelper = "04"
-            }
-            else if (department === "Civil") {
-                departmentHelper = "05"
-            }
-            else {
-                departmentHelper = "06"
-            }
+            
 
             const faculties = await Faculty.find({ department })
             let helper;

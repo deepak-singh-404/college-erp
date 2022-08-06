@@ -1,69 +1,75 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { adminLogout } from '../redux/action/adminAction'
-
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import "../Style/AdminHomeHelper.css";
+import { CgProfile } from "react-icons/cg";
+import {FaHome} from "react-icons/fa";
+import {BsFillPersonPlusFill} from 'react-icons/bs'
+import {GiTeacher} from 'react-icons/gi'
+import {BsPersonLinesFill} from 'react-icons/bs'
 
 const Home = () => {
-    const store = useSelector(store => store)
-    const [name, setName] = useState("")
-    useEffect(() => {
-
-        if (store.admin.admin.name) {
-            setName(store.admin.admin.name)
-        }
-    }, [store.admin.admin.name])
-    const history = useHistory()
-    const dispatch = useDispatch()
-    const logoutHandler = () => {
-        dispatch(adminLogout())
-        history.push('/')
+  const store = useSelector((store) => store);
+  const [name, setName] = useState("");
+  useEffect(() => {
+    if (store.admin.admin.name) {
+      setName(store.admin.admin.name);
     }
-    return (
-        <div className="container-fluid">
-          
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <h4 className="navbar-brand mt-1" href="">SRM</h4>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <button type="button" className="btn"><Link to="/admin"><li>{name.toUpperCase()}</li></Link></button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/addFaculty"><li>ADD FACULTY</li></Link></button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/addStudent"><li>ADD STUDENT</li></Link></button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/addSubject"><li>ADD SUBJECT</li></Link></button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/addAdmin"><li>ADD ADMIN</li></Link></button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/allFaculties"><li>OUR FACULTIES</li></Link></button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/allStudents"><li>OUR STUDENTS</li></Link></button>
-                        </li>
-                        <li className="nav-item">
-                            <button type="button" className="btn"><Link to="/admin/allSubject"><li>SUBJECTS</li></Link></button>
-                        </li>
+  }, [store.admin.admin.name]);
+  
+  
 
-                    </ul>
-                </div>
-                <div>
-
-                    <button style={{ listStyle: "None" }} onClick={logoutHandler} type="button" className="btn"><li>LOGOUT</li></button>
-
-                </div>
-            </nav>
+  return (
+    <div className="container-fluid">
+      <header className="header">
+        <div className="profile">
+          <div className="picture">
+            <CgProfile />
+          </div>
+          <div className="card-body">
+            <h5 className="card-title">{store.admin.admin.name}</h5>
+          </div>
         </div>
-    )
-}
+      </header>
+      <div className="navigation" id="navbarNav">
+        <div className="card"></div>
+        <nav className="navigation-container">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/admin">
+                <li><FaHome  className="icon"/> HOME</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/admin/addFaculty">
+                <li><BsFillPersonPlusFill className="icon"/> ADD PROFESSOR</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/admin/addStudent">
+                <li><BsFillPersonPlusFill className="icon"/> ADD ALUNO</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/admin/addAdmin">
+                <li><BsFillPersonPlusFill className="icon"/>  ADD ADMIN</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/admin/allFaculties">
+                <li><GiTeacher className="icon"/>NOSSOS PROFESSORES</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/admin/allStudents">
+                <li><BsPersonLinesFill className="icon"/>NOSSOS ALUNOS</li>
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  );
+};
 
-export default Home
+export default Home;

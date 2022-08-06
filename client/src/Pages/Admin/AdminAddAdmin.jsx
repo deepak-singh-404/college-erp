@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import classnames from 'classnames'
 import { adminAddAdmin } from '../../redux/action/adminAction'
 import AdminHomeHelper from '../../Components/AdminHomeHelper'
-
+import '../../Style/AddAdmin.css'
 
 
 const AdminAddAdmin = () => {
@@ -57,23 +57,21 @@ const AdminAddAdmin = () => {
 
     return (
 
-        <div>
+        <section className='add-admin'>
             {store.admin.isAuthenticated ? (<><AdminHomeHelper />
-                <div className="container mt-5">
-                    <div className="row ">
-                        <div className="col">
+                        <div className="add-admin-container">
                             <form noValidate onSubmit={formHandler}>
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <div className="form-group">
-                                            <label htmlFor="nameId">Admin Name</label>
+                                        <div className="input-admin">
+                                            <label htmlFor="nameId">Nome do Admin</label>
                                             <input onChange={(e) => setName(e.target.value)} type="text" className={classnames("form-control",
                                                 {
                                                     'is-invalid': error.name
                                                 })} id="nameId" />
                                             {error.name && (<div className="invalid-feedback">{error.name}</div>)}
                                         </div>
-                                        <div className="form-group">
+                                        <div className="input-admin">
                                             <label htmlFor="emailId">Email</label>
                                             <input onChange={(e) => setEmail(e.target.value)} type="email" className={classnames("form-control",
                                                 {
@@ -83,18 +81,15 @@ const AdminAddAdmin = () => {
                                         </div>
 
                                         <div className="form-group">
-                                            <label htmlFor="departmentId">Department</label>
+                                            <label htmlFor="departmentId">Departamento</label>
                                             <select onChange={(e) => setDepartment(e.target.value)} className={classnames("form-control",
                                                 {
                                                     'is-invalid': error.department
                                                 })} id="departmentId">
                                                 <option>Select</option>
-                                                <option value="E.C.E">E.C.E</option>
-                                                <option value="C.S.E">C.S.E</option>
-                                                <option value="E.E.E">E.E.E</option>
-                                                <option value="I.T">I.T</option>
-                                                <option value="Mechanical">Mechanical</option>
-                                                <option value="Civil">Civil</option>
+                                                <option value="Fundamental 1">Fundamental 1</option>
+                                                <option value="Fundamental 2">Fundamental 2</option>
+                                                <option value="Ensino Médio">Ensino Médio</option>
                                             </select>
                                             {error.department && (<div className="invalid-feedback">{error.department}</div>)}
                                         </div>
@@ -109,7 +104,7 @@ const AdminAddAdmin = () => {
                                             {error.dob && (<div className="invalid-feedback">{error.dob}</div>)}
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="numberId">Contact Number</label>
+                                            <label htmlFor="numberId">Número de Contato</label>
                                             <input onChange={(e) => setContactNumber(e.target.value)} type="number" className={classnames("form-control",
                                                 {
                                                     'is-invalid': error.contactNumber
@@ -122,18 +117,17 @@ const AdminAddAdmin = () => {
                                         <div class="col-md-1">
                                             {
                                                 isLoading && <div class="spinner-border text-primary" role="status">
-                                                    <span class="sr-only">Loading...</span>
+                                                    <span class="sr-only">Carrefando...</span>
                                                 </div>
                                             }
                                         </div>
                                     </div>
-                                    {!isLoading && <button type="submit" className="btn btn-info  ">Add Admin</button>}
+                                    {!isLoading && <button type="submit" className="btn-add-admin  ">ADICIONAR ADMIN</button>}
                             </form>
                         </div>
-                    </div>
-                </div></>) : (history.push('/'))}
+               </>) : (history.push('/'))}
 
-        </div>
+        </section>
 
 
 

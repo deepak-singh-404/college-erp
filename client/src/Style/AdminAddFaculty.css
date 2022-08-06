@@ -1,0 +1,38 @@
+.input-faculty>input{
+    width: 250px;
+}
+.container-global{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-faculty{
+    display: flex;
+    flex-direction:column;
+}
+.input-faculty>input{
+    width: 500px;
+}
+.input-faculty>label{
+    font-size: 1.2rem;
+}
+.btn-faculty{
+    background-color:#2BB1BA;
+    color: white;
+    padding: 15px;
+    font-size: 1.2rem;
+    width: 100%;
+    margin-bottom: 50px;
+}
+.btn-faculty:hover{
+    background-color: #1d9da7;
+    transition: 300ms;
+}
+.form-control{
+    margin: 15px 0 15px 0;
+}
+select{
+    cursor: pointer;
+    padding: 15px;
+}
