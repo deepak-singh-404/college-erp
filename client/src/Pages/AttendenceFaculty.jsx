@@ -53,7 +53,7 @@ const AttendenceFaculty = () => {
     e.preventDefault();
     setIsLoading2(true);
     dispatch(
-      markAttendence(checkedValue, subjectCode, department, year, section)
+      markAttendence(checkedValue, department, year, section)
     );
     setCheckedValue([]);
   };
@@ -68,7 +68,7 @@ const AttendenceFaculty = () => {
     <div>
       {store.faculty.isAuthenticated ? (
         <>
-          <FacultyHomeHelper />
+          
           {store.faculty.fetchedStudentsHelper && (
             <div className="attendence-container">
               <div className="sla">
@@ -168,35 +168,9 @@ const AttendenceFaculty = () => {
             <div className="row  justify-content-center mt-4">
               <div className="col-md-4">
                 <form onSubmit={secondFormHandler}>
-                  <div className="form-group">
-                    <label htmlFor="subjectId">Subject Code</label>
-                    <select
-                      required
-                      onChange={(e) => setSubjectCode(e.target.value)}
-                      className="form-control"
-                      id="subjectId"
-                    >
-                      <option>Select</option>
-                      {store.faculty.allSubjectCodeList.map(
-                        (subjectCodeName) => (
-                          <option>{subjectCodeName}</option>
-                        )
-                      )}
-                    </select>
-                  </div>
                   <table className="table">
                     <thead>
                       <tr>
-                        <td>
-                          <div className="form-check">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              value=""
-                              id="defaultCheck1"
-                            />
-                          </div>
-                        </td>
                         <th scope="col">Número de Registro</th>
                         <th scope="col">Nome do Aluno</th>
                       </tr>
