@@ -1,7 +1,89 @@
+.logo>img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.logo{
+    margin-top:30px;
+}
+.main-login-page{
+   width: 100%;
+   height: 100%;
+   background-image: url('./Images/background.jpg');
+   background-size: cover;
+}
+.main-container-login{
+    width: 100%;
+    max-width: 1500px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
 
-
-#trail {
-    background: url('./Images/green-chameleon-s9CC2SKySJM-unsplash.jpg')
-    center/cover no-repeat fixed ;
-    
+/* .login-container{
+    background-color: white;
+    color: black;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 30px 0px 30px 0px;
+} */
+.box-login{
+    background-color: white;
+    color: black;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 30px 0px 30px 0px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+   
+}
+.text-center{
+    text-align: center;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+.btn-login{
+    width: 100%;
+    background-color: #2BB1BA;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.3rem;
+}
+.btn-login:hover{
+    background-color: #1d9da7;
+    transition: 300ms;
+}
+input{
+    padding: 10px;
+    border: none;
+    outline: 1px solid #2BB1BA;
+    margin: 20px 0px 20px 0px;
+}
+form{
+    margin-top: 30px;
+}
+.forgot-password{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.forgot-password>a{
+    color: royalblue;
+    text-decoration: underline;
+}
+.text-title{
+    text-align: center;
+    color: white;
+    margin-top: 3rem;
+    text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.171);
+}
+.text-title>h1{
+    font-size: 4rem;
 }

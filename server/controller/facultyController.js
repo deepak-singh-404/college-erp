@@ -30,12 +30,16 @@ module.exports = {
             }
             const { registrationNumber, password } = req.body;
 
+            
             const faculty = await Faculty.findOne({ registrationNumber })
+            console.log('dado que retornou', faculty)
             if (!faculty) {
                 errors.registrationNumber = 'Registration number not found';
                 return res.status(404).json(errors);
             }
-            const isCorrect = await bcrypt.compare(password, faculty.password)
+            
+            const isCorrect = password == faculty.password
+            console.log('dado que retornou', isCorrect)
             if (!isCorrect) {
                 errors.password = 'Invalid Credentials';
                 return res.status(404).json(errors);
@@ -67,13 +71,13 @@ module.exports = {
             }
             const { department, year, section } = req.body;
             const subjectList = await Subject.find({ department, year })
-            if (subjectList.length === 0) {
+           /*  if (subjectList.length === 0) {
                 errors.department = 'No Subject found in given department';
                 return res.status(404).json(errors);
-            }
+            } */
             const students = await Student.find({ department, year, section })
             if (students.length === 0) {
-                errors.department = 'No Student found'
+                errors.department = 'Nenhum aluno na lista'
                 return res.status(404).json(errors);
             }
             res.status(200).json({
@@ -97,12 +101,9 @@ module.exports = {
     },
     markAttendence: async (req, res, next) => {
         try {
-            const { selectedStudents, subjectCode, department,
+            const { selectedStudents, department,
                 year,
                 section } = req.body
-            
-            const sub = await Subject.findOne({ subjectCode })
-
             //All Students
             const allStudents = await Student.find({ department, year, section })
             

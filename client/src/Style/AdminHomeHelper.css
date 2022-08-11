@@ -1,0 +1,78 @@
+.navigation{
+    max-width: 400px;
+    height: 100%;
+    background-color: #5187fc;
+    color: white;
+    text-align: left;
+    position: fixed;
+    padding: 10px;
+    top: 0;
+
+}
+nav>ul>li>a{
+    color: white;
+}
+.nav-item{
+    border-bottom: 1px solid rgba(226, 226, 226, 0.164);
+    border-top: 1px solid rgba(226, 226, 226, 0.164);
+    padding: 10px;
+}
+.nav-item>a>li{
+    margin: 20px 0 20px 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.nav-item>.active{
+    text-decoration: underline;
+    text-underline-offset: 1rem;
+    text-decoration-color:white;
+    text-decoration-thickness: 2px;
+}
+.navigation-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header{
+    width: 100%;
+    background-color: white;
+    height: 70px;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.158);
+}
+.profile{
+    display: flex;
+    float: right;
+    background-color: #5187fc;
+    width: 100%;
+    max-width: 230px;
+    height: 70px;
+    align-items: center;
+}
+.picture{
+    width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 3.5rem;
+   color: white;
+}
+.card-body>h5{
+    font-size: 1.2rem;
+    margin-right: 30px;
+    color: white;
+}
+.btn-logout{
+   background-color: none;
+   color: #5187fc;
+   font-size: 1.5rem;
+   font-weight: bold;
+   float: right;
+}
+.icon{
+    font-size: 2rem;
+    margin: 0px 18px 0px 0px;
+}

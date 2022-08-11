@@ -1,0 +1,34 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-login{
+    background-color: white;
+    color: black;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    margin-top: 3rem;
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.308);
+}
+.logo{
+    width: 100%;
+    text-align: center;
+}
+.btn-login-admin{
+    width: 100%;
+    background-color: #2BB1BA;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 1.3rem;
+}
+.btn-login-admin:hover{
+    background-color: #1d9da7;
+    transition: 300ms;
+}

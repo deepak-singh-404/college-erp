@@ -1,0 +1,50 @@
+.admin-all-student{
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 20rem;
+}
+.input-all-student{
+    display: flex;
+    flex-direction: column;
+
+}
+.input-all-student>select{
+    margin-right: 20px;
+    border: none;
+    outline:1px solid #2BB1BA;
+}
+.search-container-student{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+}
+.table-container>tr>th{
+    color: #2b6eba;
+}
+.table-infos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5rem;
+}
+.infos>td{
+    width: 250px;
+}
+.btn-search-student{
+    background-color:#2BB1BA;
+    color: white;
+    width: 120px;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: 25px;
+}
+.btn-search-student:hover{
+    transition: 300ms;
+    background-color: #1b959e;
+}

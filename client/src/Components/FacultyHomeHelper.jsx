@@ -1,8 +1,9 @@
 import React, {useState,useEffect} from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector} from 'react-redux'
 import {facultyLogout} from '../redux/action/facultyAction'
-
+import '../Style/FacultyHomeHelper.css'
+import {AiOutlinePoweroff} from 'react-icons/ai'
 
 
 const Home = () => {
@@ -22,40 +23,46 @@ const Home = () => {
     }
     return (
         <div className="container-fluid">
-            {/* <Header /> */}
-            <div className="row">
-                <div className="col">
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <h4 className="navbar-brand mt-1" href="">SRM</h4>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav">
-                                <li className="nav-item active">
-                                    <button type="button" className="btn"><Link to="/home"><li>{name.toUpperCase()}</li></Link></button>
-                                </li>
-                                <li className="nav-item">
-                                    <button type="button" className="btn"><Link to="/faculty/updateProfile"><li>UPDATE PROFILE</li></Link></button>
-                                </li>
-                                <li className="nav-item">
-                                    <button type="button" className="btn"><Link to="/attendenceFaculty"><li>MARK ATTENDANCE</li></Link></button>
-                                </li>
-                                <li className="nav-item">
-                                    <button type="button" className="btn"><Link to="/faculty/uploadMarks"><li>UPLOAD MARKS</li></Link></button>
-                                </li>
-                                <li className="nav-item">
-                                    <button type="button" className="btn"><Link to="/faculty/updatePassword"><li>UPDATE PASSWORD</li></Link></button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <button style={{listStyle:"None"}} onClick={logoutHandler} type="button" className="btn"><li>LOGOUT</li></button>
-                        </div>
-                    </nav>
-                </div>
-            </div>
+      <header className="header">
+        <div className="profile">
+          <div className="picture">
+          <button style={{listStyle:"None"}} onClick={logoutHandler} type="button" className="btn-logout-faculty"><li>LOGOUT<AiOutlinePoweroff/></li></button>
+          </div>
         </div>
+      </header>
+      <div className="navigation" id="navbarNav">
+        <div className="card"></div>
+        <nav className="navigation-container">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/home">
+                <li> HOME</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/faculty/updateProfile">
+                <li>Atualilzar Perfil</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/attendenceFaculty">
+                <li> Chamada</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active"  to="/faculty/uploadMarks">
+                <li>Chamadas Feitas</li>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink activeClassName="active" to="/faculty/updatePassword">
+                <li>Atualizar Senha</li>
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     )
 }
 

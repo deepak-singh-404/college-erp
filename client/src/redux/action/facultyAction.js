@@ -159,14 +159,14 @@ export const facultyUpdate = (updatedData) => {
     }
 }
 
-export const markAttendence = (selectedStudents, subjectCode, department, year,
+export const markAttendence = (selectedStudents, department, year,
            section) => {
     return async(dispatch) => {
         try {
                 await axios({
                 method: 'Post',
                     url: url + "/api/faculty/markAttendence",
-                data: { selectedStudents, subjectCode, department, year, section}
+                data: { selectedStudents, department, year, section}
                 })
             alert("attendence has been marked successfully")
             dispatch({

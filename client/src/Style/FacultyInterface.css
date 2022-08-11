@@ -1,0 +1,11 @@
+.main-interface-container{
+    display: flex;
+    margin-top: 5rem;
+    margin-left: 7rem;
+}
+.update{
+    padding: 10px;
+    background-color: royalblue;
+    color: white;
+    text-decoration: underline;
+}

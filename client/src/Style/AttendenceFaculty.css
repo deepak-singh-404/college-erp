@@ -1,0 +1,11 @@
+.input-attendence>select{
+    width: 500px;
+}
+.sla{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding-left: 20rem;
+    align-items: center;
+}

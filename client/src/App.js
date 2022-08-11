@@ -22,7 +22,6 @@ import AttendenceFaculty from './Pages/AttendenceFaculty'
 
 import AdminAddStudent from './Pages/AdminAddStudent'
 import AdminAddFaculty from './Pages/AdminAddFaculty'
-import AdminAddSubject from './Pages/AdminAddSubject'
 import StudentAttendencePage from './Pages/StudentAttendencePage'
 import FacultyStudentLoginPags from './Pages/FacultyStudentLoginPags'
 import StudentUpdatePassword from './Pages/StudentUpdatePassword'
@@ -45,8 +44,6 @@ import AdminAddAdmin from './Pages/Admin/AdminAddAdmin'
 import AdminGetAllFaculty from './Pages/Admin/AdminGetAllFaculty'
 
 import AdminGetAllStudent from './Pages/Admin/AdminGetAllStudents'
-
-import AdminGetAllSubject from './Pages/Admin/AdminGetAllSubjects'
 
 import AdminHome from './Pages/Admin/AdminHome'
  
@@ -106,11 +103,9 @@ function App() {
           <Route exact path='/admin' component={AdminHome} />
           <Route exact path="/admin/addStudent" component={AdminAddStudent} />
           <Route exact path="/admin/addFaculty" component={AdminAddFaculty} />
-          <Route exact path="/admin/addSubject" component={AdminAddSubject} />
           <Route exact path="/admin/addAdmin" component={AdminAddAdmin} />
           <Route exact path="/admin/allFaculties" component={AdminGetAllFaculty} />
           <Route exact path="/admin/allStudents" component={AdminGetAllStudent} />
-          <Route exact path="/admin/allSubject" component={AdminGetAllSubject} />
           <Route exact path="/student/attendence" component={StudentAttendencePage} />
           <Route exact path="/student/updatePassword" component={StudentUpdatePassword} />
           <Route exact path="/student/testPerformance" component={StudentTestPerformace} />
