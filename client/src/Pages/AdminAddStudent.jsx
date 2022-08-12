@@ -143,7 +143,7 @@ const AdminAddStudent = () => {
                   </div>
 
                   <div className="input-student">
-                    <label htmlFor="sectionId">Seção</label>
+                    <label htmlFor="sectionId">Período</label>
                     <input
                       onChange={(e) => setSection(e.target.value)}
                       type="text"

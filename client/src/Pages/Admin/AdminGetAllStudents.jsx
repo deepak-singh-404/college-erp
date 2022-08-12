@@ -28,12 +28,13 @@ const AdminGetAllFaculty = () => {
     }
   }, [store.admin.allStudent.length]);
   return (
-    <div>
+    <section className="all-student-admin">
+                <AdminHomeHelper />
       {store.admin.isAuthenticated ? (
         <>
-          <AdminHomeHelper />
+
           <div className="admin-all-student">
-            <form noValidate onSubmit={formHandler}>
+            <form noValidate onSubmit={formHandler} className='form'> 
               <div className="search-container-student">
                 <div className="input-all-student">
                   <label htmlFor="departmentId">Departamento</label>
@@ -98,25 +99,23 @@ const AdminGetAllFaculty = () => {
                 </div>
               </div>
             </form>
-          </div>
-          <div className="col-md-8">
             <div className="table-infos">
               <div className="table-container">
                 <tr>
-                  <th scope="col">N°</th>
                   <th scope="col">Número de Registro</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Série</th>
+                  <th scope="col">Número do responsável</th>
+                  <th scope="col">Número do Aluno</th>
                 </tr>
 
                 {store.admin.allStudent.map((res, index) => (
                   <tr key={index} className="infos">
-                    <th scope="row">{index + 1}</th>
                     <td>{res.registrationNumber}</td>
                     <td>{res.name}</td>
                     <td>{res.email}</td>
-                    <td>{res.section}</td>
+                    <td>{res.fatherMobileNumber}</td>
+                    <td>{res.studentMobileNumber}</td>
                   </tr>
                 ))}
               </div>
@@ -126,7 +125,7 @@ const AdminGetAllFaculty = () => {
       ) : (
         history.push("/")
       )}
-    </div>
+    </section>
   );
 };
 

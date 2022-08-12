@@ -7,16 +7,16 @@ const validateFacultyLoginInput = (data) => {
     data.registrationNumber = !isEmpty(data.registrationNumber) ? data.registrationNumber : '';
     data.password = !isEmpty(data.password) ? data.password : '';
 
-    if (!Validator.isLength(data.registrationNumber, { min: 12, max: 12 })) {
-        errors.registrationNumber = 'Registration Number must be of 12 characters';
+    if (!Validator.isLength(data.registrationNumber, { min: 10, max: 11 })) {
+        errors.registrationNumber = 'Número de registro deve haver ao menos 10 caractéres';
     }
 
     if (Validator.isEmpty(data.registrationNumber)) {
-        errors.registrationNumber = 'Registration Number field is required';
+        errors.registrationNumber = 'Número de registro incorreto/inválido';
     }
 
     if (Validator.isEmpty(data.password)) {
-        errors.password = 'Password field is required';
+        errors.password = 'Senha Incorreta/inválida';
     }
 
     return {

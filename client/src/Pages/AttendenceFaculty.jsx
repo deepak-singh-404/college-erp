@@ -65,13 +65,13 @@ const AttendenceFaculty = () => {
   }, [store.faculty.fetchedStudentsHelper]);
 
   return (
-    <div>
+    <section className="attendence-faculty">
       {store.faculty.isAuthenticated ? (
         <>
-          
+          <FacultyHomeHelper/>
           {store.faculty.fetchedStudentsHelper && (
             <div className="attendence-container">
-              <div className="sla">
+              <div className="form-attendence-container">
                 <form noValidate onSubmit={formHandler}>
                   <div className="input-attendence">
                     <label htmlFor="branchId">Department</label>
@@ -155,27 +155,28 @@ const AttendenceFaculty = () => {
                     </div>
                   </div>
                   {!isLoading && (
-                    <button type="submit" className="btn btn-info  ">
-                      Search
+                    <button type="submit" className="btn-search  ">
+                      Procurar
                     </button>
                   )}
                 </form>
+              
               </div>
             </div>
           )}
 
           {!store.faculty.fetchedStudentsHelper && (
-            <div className="row  justify-content-center mt-4">
-              <div className="col-md-4">
+            <div className="student-list-attendence">
+              <div className="list-container">
                 <form onSubmit={secondFormHandler}>
                   <table className="table">
-                    <thead>
+                    <thead className="title-table-container">
                       <tr>
-                        <th scope="col">Número de Registro</th>
+                        <th scope="col">Presença</th>
                         <th scope="col">Nome do Aluno</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-container">
                       {store.faculty.fetchedStudents.map((obj, index) => (
                         <tr>
                           <td>
@@ -189,8 +190,7 @@ const AttendenceFaculty = () => {
                               />
                             </div>
                           </td>
-                          <td key={index}>{obj.registrationNumber}</td>
-                          <td>{obj.name}</td>
+                          <td key={index}>{obj.name}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -205,7 +205,7 @@ const AttendenceFaculty = () => {
                     </div>
                   </div>
                   {!isLoading2 && (
-                    <button type="submit" className="btn btn-info ml-1  ">
+                    <button type="submit" className="btn-send-attendence  ">
                       Enviar Presença
                     </button>
                   )}
@@ -217,7 +217,7 @@ const AttendenceFaculty = () => {
       ) : (
         history.push("/")
       )}
-    </div>
+    </section>
   );
 };
 

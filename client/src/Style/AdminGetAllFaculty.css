@@ -1,19 +1,27 @@
+.get-all-faculty{
+    display: flex;
+}
 .all-faculty-container{
     width: 100%;
+    max-width: 1200px;
+    margin: auto;
     display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 20rem;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.342);
+    flex-direction: column;
+    margin-top: 0;
+
 }
 .select-departament{
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.342);
 }
 .search-container{
     display: flex;
     align-items: center;
+    margin-left: 50px;
+}
+.select-departament>label{
+    margin-left: 50px;
 }
 .btn-search-faculty{
     background-color:#2BB1BA;
@@ -28,6 +36,14 @@
 }
 .table-container>tr>th{
     color: #2b6eba;
+    margin: 10px 0px 10px 0px;
+    text-align: left;
+}
+.table-container>tr>td{
+    background-color: rgba(236, 236, 236, 0.568);
+    padding: 8px;
+    border-right: 1px solid rgba(128, 128, 128, 0.267);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.267);
 }
 .table-infos{
     width: 100%;

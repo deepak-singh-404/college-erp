@@ -190,7 +190,7 @@ module.exports = {
             var date = new Date();
             const batch = date.getFullYear()
             var components = [
-                "STU",
+                "ALUNO",
                 date.getFullYear(),
                 departmentHelper,
                 helper
@@ -289,7 +289,7 @@ module.exports = {
             var date = new Date();
             const joiningYear = date.getFullYear()
             var components = [
-                "FAC",
+                "PROF",
                 date.getFullYear(),
                 departmentHelper,
                 helper

@@ -3,9 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import AdminHomeHelper from "../../Components/AdminHomeHelper";
 import { adminLogout } from "../../redux/action/adminAction";
-import "../../Style/AdminHome.css";
 import { AiOutlinePoweroff } from "react-icons/ai";
-
+import { CgProfile } from "react-icons/cg";
+import {BsFillPersonPlusFill} from 'react-icons/bs'
+import {GiTeacher} from 'react-icons/gi'
+import {BsPersonLinesFill} from 'react-icons/bs'
+import "../../Style/AdminHome.css";
 
 const AdminHome = () => {
   const store = useSelector((store) => store);
@@ -23,40 +26,45 @@ const AdminHome = () => {
       {store.admin.isAuthenticated ? (
         
         <div className="dashboard-container">
-             <button style={{ listStyle: "None" }} onClick={logoutHandler} type="button" className="btn-logout"><li>LOGOUT <AiOutlinePoweroff/></li></button>
-            <div className="table">
-              <table className="table-border">
-                <tbody>
-                  <tr>
-                    <td>Nome</td>
-                    <td>{store.admin.admin.name}</td>
-                  </tr>
-                  <tr>
-                    <td>Email</td>
-                    <td>{store.admin.admin.email}</td>
-                  </tr>
-                  <tr>
-                    <td>Número de Registro</td>
-                    <td>{store.admin.admin.registrationNumber}</td>
-                  </tr>
-                  <tr>
-                    <td>Ano de Entrada</td>
-                    <td>{store.admin.admin.joiningYear}</td>
-                  </tr>
-                  <tr>
-                    <td>Departamento</td>
-                    <td>{store.admin.admin.department}</td>
-                  </tr>
-                  <tr>
-                    <td>Número de Contato</td>
-                    <td>
-                      {store.admin.admin.contactNumber
-                        ? store.admin.admin.contactNumber
-                        : "NA"}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+         <div className="header">
+         <div className="profile">
+          <div className="picture">
+            <CgProfile />
+          </div>
+          <div className="card-body">
+            <h5 className="card-title">{store.admin.admin.name}</h5>
+          </div>
+         </div>
+        </div>
+            <div className="text-name"> <h1>Bem vindo de volta <span className="name">{store.admin.admin.name} !</span></h1></div>
+            <div className="Cards-container">
+              
+                  <div className="card">
+                    <Link activeClassName="active" to="/admin/addFaculty">
+                        <BsFillPersonPlusFill className="icon"/>
+                        <p>ADICIONAR PROFESSOR</p>
+                    </Link>
+                  </div>
+                  <div className="card">
+                    <Link activeClassName="active" to="/admin/addStudent">
+                        <BsFillPersonPlusFill className="icon"/>
+                        <p>ADICIONAR ALUNO</p>
+                    </Link>
+                  </div>
+                  <div className="card">
+                    <Link activeClassName="active" to="/admin/allFaculties">
+                        <GiTeacher className="icon"/>
+                        <p>TODOS OS PROFESSORES</p>
+                    </Link>
+                  </div>
+                  <div className="card">
+                    <Link activeClassName="active" to="/admin/allStudents">
+                        <BsPersonLinesFill className="icon"/>
+                        <p>TODOS OS ALUNOS</p>
+                    </Link>
+                  </div>
+                 
+              
             </div>
            
         </div>

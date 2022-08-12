@@ -1,0 +1,16 @@
+.update-profile-faculty{
+    display: flex;
+}
+.update-profile-faculty-container{
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    color: white;
+    background-color: rgb(45, 61, 151);
+    border-radius: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 34px;
+}

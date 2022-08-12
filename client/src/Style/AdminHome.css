@@ -1,33 +1,49 @@
 body{
-    background-color: white;
+    background-color: #e0e4e7;
+}
+.admin-dashboard{
+    display: flex;
 }
 .dashboard-container{
     text-align: center;
-    margin-left: 18rem;
 }
-.table-border{
+.text-name{
+    width: 100%;
+    text-align: left;
+    padding: 50px;
+}
+.Cards-container{
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding-top: 5rem;
 }
-td{
-    border: 1px solid black;
-    padding: 15px;
-    width: 400px;
+.name{
+    color: #5187FC;
 }
-.btn-logout{
-    margin-right: 3rem;
-    margin-top: 2rem;
-    padding: 5px;
-    border: 1px solid red;
-    border-radius: 20px;
-    background-color: transparent;
-    color: red;
-
-}
-.btn-logout:hover{
-    background-color: red;
-    color: white;
+.card>a{
+    color: #5187FC;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+    width: 220px;
+    height: 200px;
+    background-color: white;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.253);
+    text-align: center;
     transition: 300ms;
 }
+.card{
+    margin: 10px;
+}
+.card>a:hover{
+    transform: scale(1.05px);
+    background-color: #5187FC;
+    color: white;
+}
+
+

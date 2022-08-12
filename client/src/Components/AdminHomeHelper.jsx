@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import "../Style/AdminHomeHelper.css";
+import "./GlobalHomeHelpStyles.css";
 import { CgProfile } from "react-icons/cg";
 import {FaHome} from "react-icons/fa";
 import {BsFillPersonPlusFill} from 'react-icons/bs'
 import {GiTeacher} from 'react-icons/gi'
 import {BsPersonLinesFill} from 'react-icons/bs'
+import logo from '../Style/Images/tech school logo png.png'
 
 const Home = () => {
   const store = useSelector((store) => store);
@@ -21,18 +22,7 @@ const Home = () => {
 
   return (
     <div className="container-fluid">
-      <header className="header">
-        <div className="profile">
-          <div className="picture">
-            <CgProfile />
-          </div>
-          <div className="card-body">
-            <h5 className="card-title">{store.admin.admin.name}</h5>
-          </div>
-        </div>
-      </header>
       <div className="navigation" id="navbarNav">
-        <div className="card"></div>
         <nav className="navigation-container">
           <ul className="navbar-nav">
             <li className="nav-item">

@@ -1,3 +1,7 @@
+.add-student-admin{
+    display: flex;
+}
+
 .form-container-student{
     width: 100%;
     display: flex;

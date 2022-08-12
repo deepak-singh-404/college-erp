@@ -1,93 +1,51 @@
-import React from 'react'
-import { useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom'
-import FacultyHomeHelper from '../Components/FacultyHomeHelper'
-import '../Style/FacultyInterface.css'
-
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
+import CalendarFaculty from "../Components/CalendarFaculty";
+import FacultyHomeHelper from "../Components/FacultyHomeHelper";
+import "../Style/FacultyInterface.css";
+import {BsClipboardData,BsCheckLg} from 'react-icons/bs'
+import {FaBook} from 'react-icons/fa'
 
 const FacultyInterface = () => {
-    const history = useHistory()
-    const store = useSelector((store) => store)
-    return (
-        <>
-            {store.faculty.isAuthenticated ? <>
-                <FacultyHomeHelper />
-                <div className="container">
-                    <div className="row mt-5">
-                        <div className="col-md-2">
+  const history = useHistory();
+  const store = useSelector((store) => store);
+  return (
+  <section className="faculty-interface">
+      <div className="faculty-interface-header">
+        <FacultyHomeHelper />
+      </div>
+      <div className="faculty-interface-container">
+      <div className="text-name"><h1>Bem Vindo(a) de Volta <span className="name">{store.faculty.faculty.faculty.name} !</span></h1></div>
+      <div className="Cards-container">
+              
+              <div className="card">
+                <Link activeClassName="active" to="/attendenceFaculty">
+                  <BsCheckLg className="icon"/>
+                    <p>CHAMADA</p>
+                </Link>
+              </div>
+              <div className="card">
+                <Link activeClassName="active" to="/faculty/uploadMarks">
+                <BsClipboardData className="icon"/>
+                    <p>ENVIAR CHAMADAS</p>
+                </Link>
+              </div>
+              <div className="card">
+                <Link activeClassName="active" to="/">
+                    <FaBook className='icon'/>
+                    <p>LANÇAR NOTAS</p>
+                </Link>
+              </div>
+             
+          
+        </div>
+       <div className="calendar-container-interface">
+       <CalendarFaculty />
+       </div>
+      </div>
+    </section>
+  );
+};
 
-                        </div>
-                        <div className="col-md-8">
-                            <div className="main-interface-container">
-                                <div className="col-5">
-                                    <div className="card" style={{ width: "18rem" }}>
-                                        <img className="card-img-top" src={store.faculty.faculty.faculty.avatar} alt="Card image cap" />
-                                        <div className="card-body">
-                                            <h5 className="card-title">{store.faculty.faculty.faculty.name}</h5>
-                                            <h5 className="card-title">{store.faculty.faculty.faculty.registrationNumber}</h5>
-                                            <Link to='/faculty/updateProfile' className='update'>UPDATE PROFILE</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-7">
-                                    <table className="table border">
-                                        <tbody>
-                                            <tr>
-                                                <td>Nome</td>
-                                                <td>{store.faculty.faculty.faculty.name}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Email</td>
-                                                <td>{store.faculty.faculty.faculty.email}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Número de Registro</td>
-                                                <td>{store.faculty.faculty.faculty.registrationNumber}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Data de Nascimento</td>
-                                                <td>{store.faculty.faculty.faculty.dob}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Função</td>
-                                                <td>{store.faculty.faculty.faculty.designation}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Ano de Entrada</td>
-                                                <td>{store.faculty.faculty.faculty.joiningYear}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Departamento</td>
-                                                <td>{store.faculty.faculty.faculty.department}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Gênero</td>
-                                                <td>{store.faculty.faculty.faculty.gender ? store.faculty.faculty.faculty.gender :
-
-                                                    "NA"
-                                                }</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Número de Contato</td>
-                                                <td>{store.faculty.faculty.faculty.facultyMobileNumber ?
-                                                    store.faculty.faculty.faculty.facultyMobileNumber : "NA"}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </> : (history.push('/'))}
-           
-        </>
-
-
-    )
-}
-
-export default FacultyInterface
+export default FacultyInterface;

@@ -64,13 +64,9 @@ const AdminGetAllFaculty = () => {
                                 </div>
                                
                             </form>
-
-
-                        </div>
-                          <div className="table-infos">
+                            <div className="table-infos">
                           <div className="table-container">
                                   <tr>
-                                        <th scope="col">N°</th>
                                         <th scope="col">Número de Registro</th>
                                         <th scope="col">Nome</th>
                                         <th scope="col">Email</th>
@@ -80,7 +76,6 @@ const AdminGetAllFaculty = () => {
                                      {
                                         store.admin.allFaculty.map((res, index) =>
                                             <tr key={index} className='infos'>
-                                                <th scope="row">{index + 1}</th>
                                                 <td>{res.registrationNumber}</td>
                                                 <td>{res.name}</td>
                                                 <td>{res.email}</td>
@@ -90,6 +85,9 @@ const AdminGetAllFaculty = () => {
                                     }
                            </div>
                           </div>
+
+                        </div>
+                          
                 
            </> : (history.push('/'))}
         </section>

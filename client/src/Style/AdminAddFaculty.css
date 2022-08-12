@@ -1,3 +1,7 @@
+.add-prof{
+    display: flex;
+}
+
 .input-faculty>input{
     width: 250px;
 }
@@ -8,8 +12,8 @@
     align-items: center;
 }
 .input-faculty{
-    display: flex;
-    flex-direction:column;
+   display: flex;
+   flex-direction: column;
 }
 .input-faculty>input{
     width: 500px;

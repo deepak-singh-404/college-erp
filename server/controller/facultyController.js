@@ -69,13 +69,13 @@ module.exports = {
             if (!isValid) {
                 return res.status(400).json(errors);
             }
-            const { department, year, section } = req.body;
+            const { department, year} = req.body;
             const subjectList = await Subject.find({ department, year })
            /*  if (subjectList.length === 0) {
                 errors.department = 'No Subject found in given department';
                 return res.status(404).json(errors);
             } */
-            const students = await Student.find({ department, year, section })
+            const students = await Student.find({ department, year })
             if (students.length === 0) {
                 errors.department = 'Nenhum aluno na lista'
                 return res.status(404).json(errors);
@@ -101,11 +101,9 @@ module.exports = {
     },
     markAttendence: async (req, res, next) => {
         try {
-            const { selectedStudents, department,
-                year,
-                section } = req.body
+            const { selectedStudents, department,year} = req.body
             //All Students
-            const allStudents = await Student.find({ department, year, section })
+            const allStudents = await Student.find({ department, year })
             
             var filteredArr = allStudents.filter(function (item) {
                 return selectedStudents.indexOf(item.id) === -1
@@ -114,11 +112,10 @@ module.exports = {
             
             //Attendence mark karne wale log nahi
             for (let i = 0; i < filteredArr.length; i++) {
-                const pre = await Attendence.findOne({ student: filteredArr[i]._id, subject: sub._id })
+                const pre = await Attendence.findOne({ student: filteredArr[i]._id})
                 if (!pre) {
                     const attendence = new Attendence({
                         student: filteredArr[i],
-                        subject: sub._id
                     })
                     attendence.totalLecturesByFaculty += 1
                     await attendence.save()
@@ -129,11 +126,10 @@ module.exports = {
                 }
             }
             for (var a = 0; a < selectedStudents.length; a++) {
-                const pre = await Attendence.findOne({ student: selectedStudents[a], subject: sub._id })
+                const pre = await Attendence.findOne({ student: selectedStudents[a]})
                 if (!pre) {
                     const attendence = new Attendence({
                         student: selectedStudents[a],
-                        subject: sub._id
                     })
                     attendence.totalLecturesByFaculty += 1
                     attendence.lectureAttended += 1
@@ -160,22 +156,16 @@ module.exports = {
             if (!isValid) {
                 return res.status(400).json(errors);
             }
-            const { subjectCode, exam, totalMarks, marks, department, year,
-                section } = req.body
-            const subject = await Subject.findOne({ subjectCode })
-            const isAlready = await Mark.find({ exam, department, section, subjectCode:subject._id })
+            const {exam, totalMarks, marks, department, year } = req.body
+            const isAlready = await Mark.find({ exam, department})
             if (isAlready.length !== 0) {
                 errors.exam = "You have already uploaded marks of given exam"
                 return res.status(400).json(errors);
             }
             for (var i = 0; i < marks.length; i++) {
                 const newMarks = await new Mark({
-                    student: marks[i]._id,
-                    subject: subject._id,
                     exam,
                     department,
-                    section,
-                   
                     marks: marks[i].value,
                     totalMarks
                 })
@@ -188,7 +178,7 @@ module.exports = {
         }
         
     },
-    getAllSubjects: async (req, res, next) => {
+ /*    getAllSubjects: async (req, res, next) => {
         try {
             const allSubjects = await Subject.find({})
             if (!allSubjects) {
@@ -199,7 +189,7 @@ module.exports = {
         catch (err) {
             res.status(400).json({ message: `error in getting all Subjects", ${err.message}` })
         }
-    },
+    }, */
     updatePassword: async (req, res, next) => {
         try {
             const { errors, isValid } = validateFacultyUpdatePassword(req.body);
@@ -295,7 +285,7 @@ module.exports = {
     updateProfile: async (req, res, next) => {
         try {
             const { email, gender, facultyMobileNumber,
-                aadharCard } = req.body
+                /* aadharCard */ } = req.body
             const userPostImg = await bufferConversion(req.file.originalname, req.file.buffer)
             const imgResponse = await cloudinary.uploader.upload(userPostImg)
             const faculty = await Faculty.findOne({ email })
@@ -307,10 +297,10 @@ module.exports = {
                 faculty.facultyMobileNumber = facultyMobileNumber
                 await faculty.save()
             }
-            if (aadharCard) {
+           /*  if (aadharCard) {
                 faculty.aadharCard = aadharCard
                 await faculty.save()
-            }
+            } */
             faculty.avatar = imgResponse.secure_url
             await faculty.save()
             res.status(200).json(faculty)

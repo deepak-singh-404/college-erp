@@ -1,3 +1,7 @@
+.add-admin{
+    display: flex;
+}
+
 .add-admin-container{
     width: 100%;
     display: flex;

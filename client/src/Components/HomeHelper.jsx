@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { studentLogout, newerChats, previousChats} from '../redux/action/studentAction'
+import './GlobalHomeHelpStyles.css'
 
 
 const Home = () => {
@@ -43,9 +44,7 @@ const Home = () => {
                                     <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         ACADEMIC </a>
                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <Link className="dropdown-item" to="/student/testPerformance">Test Performance</Link>
                                         <Link className="dropdown-item" to="/student/attendence">Attendance</Link>
-                                        <Link className="dropdown-item" to="/student/getAllSubjects">Student Subject List</Link>
                                     </div>
                                 </li>
                                 <li className="nav-item">

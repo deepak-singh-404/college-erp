@@ -17,7 +17,7 @@ router.post('/updateProfile', passport.authenticate('jwt', { session: false }), 
 
 router.post('/fetchStudents', passport.authenticate('jwt', { session: false }), fetchStudents)
 
-router.post('/fetchAllSubjects', passport.authenticate('jwt', { session: false }), getAllSubjects)
+/* router.post('/fetchAllSubjects', passport.authenticate('jwt', { session: false }), getAllSubjects) */
 
 router.post('/markAttendence', passport.authenticate('jwt', { session: false }), markAttendence)
 

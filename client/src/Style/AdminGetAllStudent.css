@@ -1,13 +1,16 @@
+
+.all-student-admin{
+    display: flex;
+}
 .admin-all-student{
     width: 100%;
     display: flex;
-    justify-content: left;
-    align-items: center;
-    padding-left: 20rem;
+    flex-direction: column;
 }
 .input-all-student{
     display: flex;
     flex-direction: column;
+    margin-left: 50px;
 
 }
 .input-all-student>select{
@@ -31,7 +34,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 5rem;
+    padding: 25px;
 }
 .infos>td{
     width: 250px;

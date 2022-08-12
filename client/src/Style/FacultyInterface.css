@@ -1,11 +1,57 @@
-.main-interface-container{
+.faculty-interface-header{
     display: flex;
-    margin-top: 5rem;
-    margin-left: 7rem;
+}
+.faculty-interface{
+    display: flex;
+}
+.faculty-interface-container>.calendar-container-interface{
+    width: 100%;
+    margin-left: 50px;
+}
+.faculty-interface-container>.Cards-container>.card{
+    margin: 0;
+}
+.faculty-interface-container>.Cards-container{
+    margin: 0px 0px 50px 20px;
+}
+.faculty-interface-header>header{
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+.card{
+    width: 250px;
+}
+.card>h5{
+    margin-left:15px ;
+    font-size: 1.2rem;
+}
+.card>.card-img-top{
+    width: 70px;
+    height: 70px ;
+    object-fit: cover;
+    border-radius: 100%;
+    padding: 8px;
+}
+.header-container>.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(45, 61, 151);
+    color: white;
+}
+.container-fluid>.header{
+    height: 70px;
+    
 }
 .update{
-    padding: 10px;
-    background-color: royalblue;
-    color: white;
-    text-decoration: underline;
+    width: 250px;
+    height: 100%;
+    background-color: rgb(45, 61, 151);
+    text-align: left;
+    box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.158);
 }
+.main-interface-container{
+    display: flex;
+}
+

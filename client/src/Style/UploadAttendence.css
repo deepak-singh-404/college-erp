@@ -1,0 +1,32 @@
+.upload-attendence{
+    display: flex;
+}
+.upload-main-container{
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin: auto;
+    background-color: rgb(45, 61, 151);
+    border-radius: 15px;
+    color: white;
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form-container-upload>form>.form-group>select{
+    width: 400px;
+}
+.btn-send{
+    background-color: #2BB1BA;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+.btn-send:hover{
+    background-color:#1a8a92 ;
+    transition: 300ms;
+}

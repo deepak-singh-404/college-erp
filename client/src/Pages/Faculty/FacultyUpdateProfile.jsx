@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, withRouter } from 'react-router-dom'
-
-
 import { facultyUpdate, facultyLogout} from '../../redux/action/facultyAction'
+import '../../Style/UpdateProfileFaculty.css'
 import FacultyHomeHelper from '../../Components/FacultyHomeHelper'
 
 
@@ -45,19 +44,17 @@ const FacultyUpdateProfile = () => {
         }
     }, [store.faculty.updateProfileFlag])
     return (
-        <div>
+        <section className='update-profile-faculty'>
             {store.faculty.isAuthenticated ? <>
                 <FacultyHomeHelper />
-                <div className="container mt-5">
-                    <div className="row ">
-                        <div className="col-md-5 w-100 m-auto">
+                        <div className="update-profile-faculty-container">
                             <form onSubmit={formHandler}>
                                 <div className="form-group">
-                                    <label htmlFor="inputId">Profile Picture</label>
+                                    <label htmlFor="inputId">Foto de Perfil</label>
                                     <input required className="form-control" type="file" accept=".jpg,.png,.jpeg" id="inputId" onChange={imagehandler}></input>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="genderId">Gender</label>
+                                    <label htmlFor="genderId">Gênero</label>
                                     <select onChange={(e) => setGender(e.target.value)} className="form-control" id="genderId">
                                         <option>Select</option>
                                         <option value="Male">Male</option>
@@ -66,29 +63,24 @@ const FacultyUpdateProfile = () => {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="numberId">Contact Number</label>
+                                    <label htmlFor="numberId">Número de Contato</label>
                                     <input onChange={(e) => setContactNumber(e.target.value)} required type="number" className="form-control" id="numberId" />
-                                </div>
-                                <div className="form-group">
-                                    <label htmlFor="aadharId">Aadhar Card Number</label>
-                                    <input onChange={(e) => setAadharCard(e.target.value)} type="number" className="form-control" id="aadharId" />
                                 </div>
                                 <div class="row justify-content-center">
                                     <div class="col-md-1">
                                         {
                                             isLoading && <div class="spinner-border text-primary" role="status">
-                                                <span class="sr-only">Loading...</span>
+                                                <span class="sr-only">Carregando...</span>
                                             </div>
                                         }
                                     </div>
                                 </div>
-                                {!isLoading && <button type="submit" className="btn btn-info">Update</button>}
+                                {!isLoading && <button type="submit" className="btn-search">Atualizar</button>}
                             </form>
                         </div>
-                    </div>
-                </div></> : (history.push('/'))}
+             </> : (history.push('/'))}
             
-        </div>
+        </section>
     )
 }
 

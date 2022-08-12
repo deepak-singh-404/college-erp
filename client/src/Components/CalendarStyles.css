@@ -1,0 +1,20 @@
+.calendar-style{
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+}
+.calendar-inputs{
+    display: flex;
+}
+.event-btn{
+    background-color:#2BB1BA;
+    color: white;
+    width: 180px;
+    padding: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+.evetn-btn:hover{
+    transition: 300ms;
+    background-color: #1b959e;
+}
